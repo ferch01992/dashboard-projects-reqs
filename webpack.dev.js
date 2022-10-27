@@ -7,7 +7,7 @@ module.exports = merge(common, {
   devServer: {
     allowedHosts: 'all',
     historyApiFallback: true,
-    host: '127.0.0.1',
+    host: '192.168.0.13',
     open: true,
     port: 8080,
     static: { directory: path.resolve(__dirname, 'public') }

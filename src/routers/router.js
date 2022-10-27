@@ -2,6 +2,7 @@ import React from 'react'
 
 import { ContainerGlobal } from 'Containers/containerGlobal.js'
 import { Home } from 'View/home/home.js'
+import { Login } from 'View/auth/login.js'
 import { Route, Routes } from 'react-router-dom'
 
 const Router = () => {
@@ -9,6 +10,14 @@ const Router = () => {
     <Routes>
       <Route
         path="/"
+        element={
+          <ContainerGlobal>
+            <Login />
+          </ContainerGlobal>
+        }
+      />
+      <Route
+        path="/home"
         element={
           <ContainerGlobal>
             <Home />
@@ -20,7 +29,7 @@ const Router = () => {
         path="*"
         element={
           <ContainerGlobal>
-            <Home />
+            <Login />
           </ContainerGlobal>
         }
       />

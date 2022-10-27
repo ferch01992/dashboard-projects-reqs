@@ -113,6 +113,15 @@ export const themeLight = {
       }
     },
 
+    MuiFilledInput: {
+      styleOverrides: {
+        root: {
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0
+        }
+      }
+    },
+
     MuiIconButton: {
       variants: [
         {
@@ -307,6 +316,14 @@ export const themeLight = {
         root: {
           borderColor: '#E7EBF0',
           padding: '8px 16px'
+        }
+      }
+    },
+
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          margin: '1em'
         }
       }
     },
