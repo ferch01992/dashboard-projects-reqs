@@ -112,6 +112,15 @@ export const themeDark = {
       }
     },
 
+    MuiFilledInput: {
+      styleOverrides: {
+        root: {
+          borderTopLeftRadius: 0,
+          borderTopRightRadius: 0
+        }
+      }
+    },
+
     MuiIconButton: {
       variants: [
         {
@@ -290,7 +299,6 @@ export const themeDark = {
         }
       }
     },
-
     MuiTab: {
       defaultProps: {
         disableTouchRipple: true
@@ -309,6 +317,10 @@ export const themeDark = {
           padding: '8px 16px'
         }
       }
+    },
+
+    MuiTextField: {
+      styleOverrides: {}
     },
 
     MuiToggleButton: {
