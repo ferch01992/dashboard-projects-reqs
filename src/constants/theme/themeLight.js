@@ -143,6 +143,16 @@ export const themeLight = {
       }
     },
 
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          color: '#EB0014',
+          fontWeight: 400
+          // marginLeft: 0
+        }
+      }
+    },
+
     MuiIconButton: {
       styleOverrides: {
         root: {

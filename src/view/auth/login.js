@@ -83,6 +83,8 @@ const Login = () => {
                 label="Correo"
                 value={values.email}
                 onChange={handleChange}
+                error={true}
+                messageError={'soy el error'}
                 endAdornment={
                   <InputAdornment position="end">
                     <MarkunreadIcon />
@@ -94,6 +96,8 @@ const Login = () => {
                 id="password"
                 label="Contraseña"
                 onChange={handleChange}
+                error={true}
+                messageError={'soy el error'}
                 value={values.password}
               />
 

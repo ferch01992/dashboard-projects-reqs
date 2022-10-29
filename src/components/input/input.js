@@ -4,14 +4,18 @@ import PropTypes from 'prop-types'
 
 import FilledInput from '@mui/material/FilledInput'
 import FormControl from '@mui/material/FormControl'
+import FormHelperText from '@mui/material/FormHelperText'
 import InputLabel from '@mui/material/InputLabel'
 
 const Input = React.memo(props => {
-  const { label, variant, id, onChange, ...rest } = props
+  const { label, messageError, variant, id, onChange, ...rest } = props
   return (
     <FormControl variant={variant}>
-      <InputLabel htmlFor="filled-adornment-email">{label}</InputLabel>
+      <InputLabel htmlFor={`InputLabel-${id}`}>{label}</InputLabel>
       <FilledInput id={id} onChange={onChange(id)} {...rest} />
+      <FormHelperText id={`FormHelperText-${id}`}>
+        {messageError}
+      </FormHelperText>
     </FormControl>
   )
 })
@@ -19,6 +23,7 @@ const Input = React.memo(props => {
 Input.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  messageError: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
