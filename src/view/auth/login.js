@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import { actionSetModeIsDark } from 'Actions/actionsTheme.js'
+import { singleValidation } from 'validations-forms'
 import { useStore } from 'Hook/store/useStore.js'
 
 import { MODE_PALETTE } from 'Constants/theme/themeMui.js'
@@ -37,6 +38,10 @@ const Login = () => {
   const { paletteMode } = theme
   const [values, setValues] = useState({
     email: '',
+    errorEmail: false,
+    errorPassword: false,
+    messageEmail: '',
+    messagePassword: '',
     password: ''
   })
 
@@ -46,8 +51,36 @@ const Login = () => {
     mapDispatchToProps(actionSetModeIsDark(mode))
   }
 
-  const handleChange = prop => event => {
-    setValues({ ...values, [prop]: event.target.value })
+  const handleChange = idInput => event => {
+    const typeValidation = idInput === 'password' ? 'PASSWORD' : 'EMAIL'
+    const title = idInput === 'password' ? 'contraseña' : 'correo'
+    const { message, status } = singleValidation({
+      id: idInput,
+      title,
+      type: ['R', typeValidation],
+      value: event.target.value
+    })
+
+    const erros =
+      idInput === 'password'
+        ? {
+            errorPassword: !status,
+            messagePassword: message
+          }
+        : {
+            errorEmail: !status,
+            messageEmail: message
+          }
+
+    setValues({
+      ...values,
+      ...erros,
+      [idInput]: event.target.value
+    })
+  }
+
+  const handleClick = idButton => event => {
+    alert(idButton)
   }
 
   return (
@@ -83,8 +116,8 @@ const Login = () => {
                 label="Correo"
                 value={values.email}
                 onChange={handleChange}
-                error={true}
-                messageError={'soy el error'}
+                error={values.errorEmail}
+                messageError={values.messageEmail}
                 endAdornment={
                   <InputAdornment position="end">
                     <MarkunreadIcon />
@@ -96,16 +129,23 @@ const Login = () => {
                 id="password"
                 label="Contraseña"
                 onChange={handleChange}
-                error={true}
-                messageError={'soy el error'}
+                error={values.errorPassword}
+                messageError={values.messagePassword}
                 value={values.password}
               />
 
-              <Button variant="contained" size="large" endIcon={<SendIcon />}>
+              <Button
+                variant="contained"
+                size="large"
+                endIcon={<SendIcon />}
+                onClick={handleClick('sesion')}>
                 Iniciar Sesion
               </Button>
               <Divider>ó</Divider>
-              <Button variant="link" size="large">
+              <Button
+                variant="link"
+                size="large"
+                onClick={handleClick('new-account')}>
                 Crear cuenta
               </Button>
             </Stack>
