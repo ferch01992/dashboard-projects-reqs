@@ -27,7 +27,7 @@ export const themeDark = {
         sizeLarge: {
           fontFamily: "'roboto'",
           fontSize: '1rem',
-          fontWeight: 700,
+          fontWeight: 400,
           letterSpacing: 0,
           lineHeight: 1.3125,
           padding: '0.875rem 1rem',
