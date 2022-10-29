@@ -667,7 +667,7 @@ export const themeDark = {
       color: '#66B2FF',
       fontFamily: "'roboto'",
       fontSize: '1.5rem',
-      fontWeight: 400,
+      fontWeight: 300,
       letterSpacing: 0.1,
       lineHeight: 1.5,
       scrollMarginTop: 'calc(var(--MuiDocs-header-height) + 32px)'
@@ -676,7 +676,7 @@ export const themeDark = {
     h6: {
       fontFamily: "'roboto'",
       fontSize: '1.25rem',
-      fontWeight: 500,
+      fontWeight: 300,
       lineHeight: 1.5,
       scrollMarginTop: 'calc(var(--MuiDocs-header-height) + 32px)'
     },

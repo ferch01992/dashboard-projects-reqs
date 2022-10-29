@@ -11,7 +11,7 @@ import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 
 const InputPass = React.memo(props => {
-  const { label, variant, value, onChange } = props
+  const { label, variant, id, onChange, ...rest } = props
 
   const [showPassword, setShowPassword] = useState(false)
 
@@ -25,16 +25,15 @@ const InputPass = React.memo(props => {
 
   return (
     <FormControl variant={variant}>
-      <InputLabel htmlFor="filled-adornment-password">{label}</InputLabel>
+      <InputLabel htmlFor={id}>{label}</InputLabel>
       <FilledInput
-        id="filled-adornment-password"
+        id={id}
         type={showPassword ? 'text' : 'password'}
-        value={value}
-        onChange={onChange('password')}
+        onChange={onChange(id)}
         endAdornment={
           <InputAdornment position="end">
             <IconButton
-              aria-label="toggle password visibility"
+              aria-label={id}
               onClick={handleClickShowPassword}
               onMouseDown={handleMouseDownPassword}
               edge="end">
@@ -42,12 +41,14 @@ const InputPass = React.memo(props => {
             </IconButton>
           </InputAdornment>
         }
+        {...rest}
       />
     </FormControl>
   )
 })
 
 InputPass.propTypes = {
+  id: PropTypes.string.isRequired,
   label: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,

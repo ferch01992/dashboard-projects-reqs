@@ -1,5 +1,5 @@
 {
-  "name": "react_template",
+  "name": "dashboard-projects-reqs",
   "version": "1.0.0",
   "description": "template react",
   "main": "public/index.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ferch01992/React_template.git"
+    "url": "git+https://github.com/ferch01992/dashboard-projects-reqs.git"
   },
   "keywords": [
     "\"react",
@@ -25,9 +25,9 @@
   "author": "Fernando L.C",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ferch01992/React_template/issues"
+    "url": "https://github.com/ferch01992/dashboard-projects-reqs/issues"
   },
-  "homepage": "https://github.com/ferch01992/React_template#readme",
+  "homepage": "https://github.com/ferch01992/dashboard-projects-reqs#readme",
   "devDependencies": {
     "@babel/core": "7.18.10",
     "@babel/preset-env": "7.18.10",

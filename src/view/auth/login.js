@@ -13,12 +13,10 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import ButtonIcon from 'Components/buttonIcon/buttonIcon.js'
 import Divider from '@mui/material/Divider'
-import FilledInput from '@mui/material/FilledInput'
-import FormControl from '@mui/material/FormControl'
 import Grid from '@mui/material/Grid'
 import Hidden from '@mui/material/Hidden'
+import Input from 'Components/input/input.js'
 import InputAdornment from '@mui/material/InputAdornment'
-import InputLabel from '@mui/material/InputLabel'
 import InputPass from 'Components/inputPass/inputPass.js'
 import MarkunreadIcon from '@mui/icons-material/Markunread'
 import Stack from '@mui/material/Stack'
@@ -26,9 +24,12 @@ import Typography from '@mui/material/Typography'
 
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
-import loginDark from 'Images/loginDark.svg'
-import loginLight from 'Images/loginLight.svg'
+import LoginDark from 'Images/loginDark.svg'
+import LoginLight from 'Images/loginLight.svg'
+import Logo from 'Images/logo.svg'
 import SendIcon from '@mui/icons-material/Send'
+
+import { Icon } from '@mui/material'
 
 const Login = () => {
   const [mapStateToProps, mapDispatchToProps] = useStore()
@@ -36,8 +37,7 @@ const Login = () => {
   const { paletteMode } = theme
   const [values, setValues] = useState({
     email: '',
-    password: '',
-    showPassword: false
+    password: ''
   })
 
   const handleThemeMode = () => {
@@ -69,27 +69,29 @@ const Login = () => {
               alignItems="stretch"
               spacing={2}>
               <Typography variant="h3" component="h3">
-                Projects
+                <Icon>
+                  <img height={25} width={25} src={Logo} />
+                </Icon>
+                {' Dashboard'}
               </Typography>
-              <Typography variant="h5" component="h5">
+              <Typography variant="h6" component="h6">
                 Ingrese a su cuenta
               </Typography>
-              <FormControl variant="filled">
-                <InputLabel htmlFor="filled-adornment-email">Email</InputLabel>
-                <FilledInput
-                  id="filled-adornment-email"
-                  type={'text'}
-                  value={values.email}
-                  onChange={handleChange('email')}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <MarkunreadIcon />
-                    </InputAdornment>
-                  }
-                />
-              </FormControl>
+
+              <Input
+                id="email"
+                label="Correo"
+                value={values.email}
+                onChange={handleChange}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <MarkunreadIcon />
+                  </InputAdornment>
+                }
+              />
 
               <InputPass
+                id="password"
                 label="Contraseña"
                 onChange={handleChange}
                 value={values.password}
@@ -99,7 +101,7 @@ const Login = () => {
                 Iniciar Sesion
               </Button>
               <Divider>ó</Divider>
-              <Button variant="link" size="large" endIcon={<SendIcon />}>
+              <Button variant="link" size="large">
                 Crear cuenta
               </Button>
             </Stack>
@@ -109,7 +111,7 @@ const Login = () => {
           <Grid item md={8}>
             <PaperImageLogin>
               <img
-                src={paletteMode === MODE_PALETTE.DARK ? loginDark : loginLight}
+                src={paletteMode === MODE_PALETTE.DARK ? LoginDark : LoginLight}
                 alt="login"
               />
             </PaperImageLogin>
