@@ -20,14 +20,14 @@ export const themeLight = {
 
       styleOverrides: {
         containedPrimary: {
-          backgroundColor: '#007FFF',
+          backgroundColor: '#FD7401',
           color: '#fff'
         },
 
         sizeLarge: {
           fontFamily: "'roboto'",
           fontSize: '1rem',
-          fontWeight: 700,
+          fontWeight: 400,
           letterSpacing: 0,
           lineHeight: 1.3125,
           padding: '0.875rem 1rem',
@@ -51,11 +51,11 @@ export const themeLight = {
               position: 'absolute',
               right: 0
             },
-            '& .MuiButton-startIcon': { color: '#bdbdbd' },
+            '& .MuiButton-startIcon': { color: '#FD7401' },
             '&:hover, &.Mui-focusVisible': {
-              '& .MuiButton-endIcon': { color: '#007FFF' },
+              '& .MuiButton-endIcon': { color: '#FD7401' },
               backgroundColor: '#F0F7FF',
-              borderColor: '#007FFF'
+              borderColor: '#FD7401'
             },
             WebkitFontSmoothing: 'subpixel-antialiased',
             backgroundColor: '#fafafa',
@@ -70,10 +70,32 @@ export const themeLight = {
           }
         },
         {
+          props: { variant: 'outlined' },
+          style: {
+            '& .MuiButton-endIcon': {
+              color: '#FD7401'
+            },
+            '& .MuiButton-startIcon': { color: '#FD7401' },
+            '&:hover, &.Mui-focusVisible': {
+              '& .MuiButton-endIcon': { color: '#FD7401' },
+              backgroundColor: '#F0F7FF',
+              borderColor: '#FD7401'
+            },
+            WebkitFontSmoothing: 'subpixel-antialiased',
+            backgroundColor: '#FFFFFF',
+            border: '1px solid',
+            borderColor: '#FD7401',
+            color: '#FD7401',
+            fontFamily: "'roboto'",
+            letterSpacing: 0,
+            lineHeight: 1.5
+          }
+        },
+        {
           props: { variant: 'link' },
           style: {
             '& svg': { ml: -0.5 },
-            color: '#0072E5',
+            color: '#FD7401',
             fontSize: '0.875rem',
             fontWeight: 700,
             mb: 1
@@ -108,7 +130,7 @@ export const themeLight = {
     MuiDivider: {
       styleOverrides: {
         root: {
-          borderColor: 'rgba(194, 224, 255, 0.08)'
+          borderColor: '#bdbdbd'
         }
       }
     },
@@ -116,13 +138,27 @@ export const themeLight = {
     MuiFilledInput: {
       styleOverrides: {
         root: {
-          borderTopLeftRadius: 0,
-          borderTopRightRadius: 0
+          borderTopLeftRadius: 0
+        }
+      }
+    },
+
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          color: '#EB0014',
+          fontWeight: 400
+          // marginLeft: 0
         }
       }
     },
 
     MuiIconButton: {
+      styleOverrides: {
+        root: {
+          color: '#FD7401'
+        }
+      },
       variants: [
         {
           props: { color: 'primary' },
@@ -139,6 +175,14 @@ export const themeLight = {
           }
         }
       ]
+    },
+
+    MuiInputAdornment: {
+      styleOverrides: {
+        root: {
+          color: '#FD7401'
+        }
+      }
     },
 
     MuiLink: {
@@ -672,7 +716,7 @@ export const themeLight = {
       color: '#007FFF',
       fontFamily: "'roboto'",
       fontSize: '1.5rem',
-      fontWeight: 400,
+      fontWeight: 300,
       letterSpacing: 0.1,
       lineHeight: 1.5,
       scrollMarginTop: 'calc(var(--MuiDocs-header-height) + 32px)'
@@ -681,7 +725,7 @@ export const themeLight = {
     h6: {
       fontFamily: "'roboto'",
       fontSize: '1.25rem',
-      fontWeight: 500,
+      fontWeight: 300,
       lineHeight: 1.5,
       scrollMarginTop: 'calc(var(--MuiDocs-header-height) + 32px)'
     },

@@ -27,7 +27,7 @@ export const themeDark = {
         sizeLarge: {
           fontFamily: "'roboto'",
           fontSize: '1rem',
-          fontWeight: 700,
+          fontWeight: 400,
           letterSpacing: 0,
           lineHeight: 1.3125,
           padding: '0.875rem 1rem',
@@ -117,6 +117,16 @@ export const themeDark = {
         root: {
           borderTopLeftRadius: 0,
           borderTopRightRadius: 0
+        }
+      }
+    },
+
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          color: '#EB0014',
+          fontWeight: 400
+          // marginLeft: 0
         }
       }
     },
@@ -667,7 +677,7 @@ export const themeDark = {
       color: '#66B2FF',
       fontFamily: "'roboto'",
       fontSize: '1.5rem',
-      fontWeight: 400,
+      fontWeight: 300,
       letterSpacing: 0.1,
       lineHeight: 1.5,
       scrollMarginTop: 'calc(var(--MuiDocs-header-height) + 32px)'
@@ -676,7 +686,7 @@ export const themeDark = {
     h6: {
       fontFamily: "'roboto'",
       fontSize: '1.25rem',
-      fontWeight: 500,
+      fontWeight: 300,
       lineHeight: 1.5,
       scrollMarginTop: 'calc(var(--MuiDocs-header-height) + 32px)'
     },

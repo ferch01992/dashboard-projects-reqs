@@ -1,67 +1,47 @@
 import React, { useState } from 'react'
 
+import { actionSetModeIsDark } from 'Actions/actionsTheme.js'
+import { singleValidation } from 'validations-forms'
 import { useStore } from 'Hook/store/useStore.js'
 
-import { actionSetModeIsDark } from 'Actions/actionsTheme.js'
-
-import ButtonIcon from 'Components/buttonIcon/buttonIcon.js'
-import login from 'Images/login.svg'
-
 import { MODE_PALETTE } from 'Constants/theme/themeMui.js'
-
-import FilledInput from '@mui/material/FilledInput'
-import FormControl from '@mui/material/FormControl'
-import IconButton from '@mui/material/IconButton'
-import InputAdornment from '@mui/material/InputAdornment'
-import InputLabel from '@mui/material/InputLabel'
-import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle'
-import Visibility from '@mui/icons-material/Visibility'
-import VisibilityOff from '@mui/icons-material/VisibilityOff'
-
-import Button from '@mui/material/Button'
+import {
+  PaperFormLogin,
+  PaperImageLogin
+} from 'View/auth/components/papersFormLogin.js'
 
 import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import ButtonIcon from 'Components/buttonIcon/buttonIcon.js'
+import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import Hidden from '@mui/material/Hidden'
-import Paper from '@mui/material/Paper'
-import { styled } from '@mui/material/styles'
+import Input from 'Components/input/input.js'
+import InputAdornment from '@mui/material/InputAdornment'
+import InputPass from 'Components/inputPass/inputPass.js'
+import MarkunreadIcon from '@mui/icons-material/Markunread'
+import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
-import Stack from '@mui/material/Stack'
+import LoginDark from 'Images/loginDark.svg'
+import LoginLight from 'Images/loginLight.svg'
+import Logo from 'Images/logo.svg'
+import SendIcon from '@mui/icons-material/Send'
 
-const Paper1 = styled(Paper)(({ theme }) => ({
-  alignItems: 'stretch',
-  borderRadius: 0,
-  display: 'flex',
-  flexDirection: 'column',
-  height: '100%',
-  justifyContent: 'center',
-  minHeight: '100vh',
-  padding: '3%',
-  textAlign: 'center'
-}))
-
-const Paper2 = styled(Paper)(({ theme }) => ({
-  backgroundColor:
-    theme.palette.mode === 'dark' ? theme.palette.primaryDark[800] : '#F1F3F6',
-  borderRadius: 0,
-  display: 'flex',
-  height: '100%',
-  justifyContent: 'center',
-  minHeight: '100vh'
-}))
+import { Icon } from '@mui/material'
 
 const Login = () => {
   const [mapStateToProps, mapDispatchToProps] = useStore()
-
   const { theme } = mapStateToProps
-
   const { paletteMode } = theme
-
   const [values, setValues] = useState({
     email: '',
+    errorEmail: false,
+    errorPassword: false,
+    messageEmail: '',
+    messagePassword: '',
     password: ''
   })
 
@@ -71,26 +51,43 @@ const Login = () => {
     mapDispatchToProps(actionSetModeIsDark(mode))
   }
 
-  const handleChange = prop => event => {
-    setValues({ ...values, [prop]: event.target.value })
-  }
+  const handleChange = idInput => event => {
+    const typeValidation = idInput === 'password' ? 'PASSWORD' : 'EMAIL'
+    const title = idInput === 'password' ? 'contraseña' : 'correo'
+    const { message, status } = singleValidation({
+      id: idInput,
+      title,
+      type: ['R', typeValidation],
+      value: event.target.value
+    })
 
-  const handleClickShowPassword = () => {
+    const erros =
+      idInput === 'password'
+        ? {
+            errorPassword: !status,
+            messagePassword: message
+          }
+        : {
+            errorEmail: !status,
+            messageEmail: message
+          }
+
     setValues({
       ...values,
-      showPassword: !values.showPassword
+      ...erros,
+      [idInput]: event.target.value
     })
   }
 
-  const handleMouseDownPassword = event => {
-    event.preventDefault()
+  const handleClick = idButton => event => {
+    alert(idButton)
   }
 
   return (
     <Box sx={{ height: '100%', width: '100%' }}>
       <Grid container spacing={0}>
         <Grid item xs={12} md={4}>
-          <Paper1>
+          <PaperFormLogin>
             <Stack direction="row" justifyContent="flex-end" spacing={1}>
               <ButtonIcon
                 statusButton={paletteMode === MODE_PALETTE.DARK}
@@ -105,61 +102,63 @@ const Login = () => {
               alignItems="stretch"
               spacing={2}>
               <Typography variant="h3" component="h3">
-                Projects
+                <Icon>
+                  <img height={25} width={25} src={Logo} />
+                </Icon>
+                {' Dashboard'}
               </Typography>
-              <Typography variant="h5" component="h5">
+              <Typography variant="h6" component="h6">
                 Ingrese a su cuenta
               </Typography>
-              <FormControl variant="filled">
-                <InputLabel htmlFor="filled-adornment-email">Email</InputLabel>
-                <FilledInput
-                  id="filled-adornment-email"
-                  type={'text'}
-                  value={values.email}
-                  onChange={handleChange('email')}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <SupervisedUserCircleIcon />
-                    </InputAdornment>
-                  }
-                />
-              </FormControl>
-              <FormControl variant="filled">
-                <InputLabel htmlFor="filled-adornment-password">
-                  Password
-                </InputLabel>
-                <FilledInput
-                  id="filled-adornment-password"
-                  type={values.showPassword ? 'text' : 'password'}
-                  value={values.password}
-                  onChange={handleChange('password')}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        edge="end">
-                        {values.showPassword ? (
-                          <VisibilityOff />
-                        ) : (
-                          <Visibility />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                />
-              </FormControl>
 
-              <Button variant="contained">Iniciar Sesion</Button>
+              <Input
+                id="email"
+                label="Correo"
+                value={values.email}
+                onChange={handleChange}
+                error={values.errorEmail}
+                messageError={values.messageEmail}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <MarkunreadIcon />
+                  </InputAdornment>
+                }
+              />
+
+              <InputPass
+                id="password"
+                label="Contraseña"
+                onChange={handleChange}
+                error={values.errorPassword}
+                messageError={values.messagePassword}
+                value={values.password}
+              />
+
+              <Button
+                variant="contained"
+                size="large"
+                endIcon={<SendIcon />}
+                onClick={handleClick('sesion')}>
+                Iniciar Sesion
+              </Button>
+              <Divider>ó</Divider>
+              <Button
+                variant="link"
+                size="large"
+                onClick={handleClick('new-account')}>
+                Crear cuenta
+              </Button>
             </Stack>
-          </Paper1>
+          </PaperFormLogin>
         </Grid>
         <Hidden only={['xs']}>
           <Grid item md={8}>
-            <Paper2>
-              <img src={login} alt="login" />
-            </Paper2>
+            <PaperImageLogin>
+              <img
+                src={paletteMode === MODE_PALETTE.DARK ? LoginDark : LoginLight}
+                alt="login"
+              />
+            </PaperImageLogin>
           </Grid>
         </Hidden>
       </Grid>

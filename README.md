@@ -115,7 +115,7 @@ para realizar la instalacion de manera correcta en su editor.
 | Webpack     | <img src ="https://img.shields.io/badge/v5.74.0-blue"> | [![Redux](https://img.shields.io/badge/Webpack-0081CB?style=for-the-badge&logo=webpack&logoColor=white)](https://webpack.js.org/)   |
 | Babel       | <img src ="https://img.shields.io/badge/v7.18.10-blue"> | [![Redux](https://img.shields.io/badge/Babel-FFAD19?style=for-the-badge&logo=Babel&logoColor=white)](https://babeljs.io/)           |
 | Material UI | <img src ="https://img.shields.io/badge/v5.10.1-blue">  | [![Redux](https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)](https://mui.com/) |
-| Sass        | <img src ="https://img.shields.io/badge/v1.54.4-blue">  | [![Redux](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)          |
+| Sass        | <img src ="https://img.shields.io/badge/v1.54.4-blue">  | [![Redux](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)             |
 
 <p align="right"><a href="#top">volver arriba 🔼</a></p>
 
